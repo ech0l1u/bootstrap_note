@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>概览</title>
+    <style type="text/css">
+    code>tag {
+        color: #4880c0;
+        font-size: 100%;
+    }
+    
+    code>abb {
+        color: #33b5e5 font-size: 100%;
+    }
+    
+    code>sta {
+        color: #000 font-size: 100%;
+    }
+    
+    code>val {
+        color: #d44905 font-size: 100%;
+    }
+    
+    code>comm {
+        color: #33be55 font-size: 100%;
+    }
+    
+    tag,
+    abb,
+    abb,
+    val,
+    comm {
+        font-size: 90%;
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+    }
+    
+    tag {
+        color: #4880c0
+    }
+    
+    abb {
+        color: #33b5e5
+    }
+    
+    sta {
+        color: #000
+    }
+    
+    val {
+        color: #c7254e
+    }
+    
+    comm {
+        color: #33be55;
+    }
+    
+    code {
+        display: block;
+    }
+    </style>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="./js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container" id="body">
+        <h1>概览<small>  乱七八糟的一些东西</small></h1>
+        <div class="container">
+            <p>
+                <tag>&#60;head></tag>
+                <sta>里一般有两个外部css两个外部js，而且顺序一般是</sta>
+                <br/><code><tag>&#60;link</tag> <abb>rel</abb><sta>=</sta>"stylesheet" <abb>href</abb><sta>=</sta>"xx/bootstrap.min.css"<tag>></tag>
+            <br/><comm>//bootstrap核心css</comm>
+            <br/><tag>&#60;link</tag> <abb>rel</abb><sta>=</sta>"stylesheet" <abb>href</abb><sta>=</sta>"xx/bootstrap-theme.min.css"<tag>></tag>
+            <br/><comm>//bootstrap-theme的主题css，可要可不要</comm>
+            <br/><tag>&#60;script</tag> <abb>src</abb><sta>=</sta>"xx/jquery.min.js"<tag>>&#60;/script></tag>
+            <br/><comm>//jquery</comm>
+            <br/><tag>&#60;script</tag> <abb>src</abb><sta>=</sta>"xx/bootstrap.min.js"<tag>>&#60;/script></tag>
+            <br/><comm>//bootstrap核心js</comm><br/></code> src和href看是引用的CDN或者自带的资源
+                <br/> 当然如果要用到bootstrap插件的话，按照惯例要在
+                <tag>&#60;/body></tag>这个标签之前插
+                <code><tag>&#60;script</tag> <abb>src</abb><sta>=</sta>"xx/jquery.min.js"<tag>>&#60;/script></tag></code>
+            </p>
+        </div>
+        <h2>移动端优先</h2>
+        <div class="container">
+            <p>首先bootstrap是以移动端优先的</p>
+            <p>所以需要在
+                <tag>&#60;head></tag>里加入这么一句：
+                <code><tag>&#60;meta</tag> <abb>name</abb><sta>=</sta><val>"viewport"</val><abb>content</abb><sta>=</sta>"width=device-width, initial-scale=1"<tag>></tag></code> 
+                <tag>content</tag>里<val>width=device-width</val>>意思是啥我也不清楚
+                <br/><val>initial-scale=1</val>我还是不清楚，但是大家好像都是这么弄得
+                <br/>有可能的话还可以加<val>user-scalable=no</val>禁用用户缩放，给人一种native app的错觉
+                <br/>还有诸如<val>maximum-scale=1</val>,最大放大倍数1倍？
+                <br/>
+                <del>我在想是不是还有<val>minimum-scale=xx</val>这种东西</del>
+            </p>
+        </div>
+        <h2>排版和普通链接</h2>
+        <div class="container">
+            <p>bootstrap默认的<tag>&#60;body></tag>的<abb>background-color</abb><sta>:</sta> <val>#fff</val>></p>
+            <p>
+                <tag>&#60;a></tag>的基本参数是<val> @font-family-base @font-size-base @line-height-base</val>，也就是说字体大小，字体还有和普通文本的垂直方向上的排版都是很正常的。
+                <del>应该在同一行中其他文本字体大小不一时<val>@line-height-base</val>是比较有用的</del>
+                <br/><tag>&#60;a></tag>的<tag>:link</tag>颜色默认是那种浅蓝色，还没有下划线
+                <br/><tag>&#60;a></tag>的<tag>:visited</tag>颜色稍深，还带了下划线
+                <br/><tag>&#60;a></tag>的<tag>:hover</tag>和<tag>:visited</tag>一模一样
+                <br/><tag>&#60;a></tag>的<tag>:active</tag>在bootstrap里没有描述
+            </p>
+        </div>
+        <h2>布局容器</h2>
+        <div class="container">
+            <p>bootstrap的页面和栅格都是用一个容器
+                <del>其实就是<tag>&#60;div></tag></del>包裹起来的，有两个class
+                <br/><tag>.container</tag>用于固定宽度并支持响应式布局的容器
+                <br/><tag>.container-fluid</tag>类用于 100% 宽度，占据全部视口（viewport）的容器</p>
+            <p>这两个类只知道不能相互嵌套，说是因为<tag>padding</tag>的原因，但是其实我也不知道
+                <br/> 不过这两个类是可以嵌套自身的，而且
+                <tag>.container</tag>自身嵌套的话，会像代码一样缩进，但是<tag>.container-fluid</tag>应为宽度
+                <del>我自己估计是100%</del>所以嵌套也看不出啥名堂。
+                <br/> 有意思的是在移动端，第一层的
+                <tag>.container</tag>和<tag>.container-fluid</tag>几乎没啥差别，，</p>
+        </div>
+        <h2>其他东西</h2>
+        <div class="container"><p>逛知乎时看bootstrapv2和v3的区别，看到有人说了<tag>box-model</tag>，看到后马上去翻了一下css，果然TM的bootstrap里所有的<tag>box-sizing</tag>的值都是<val>border</val>，即以border外沿为基础，而不是普通浏览器默认设置的<val>content</val>，终于知道那天那个cover为什么底下面那个说明用了JS计算然后修改位置还是不能居中，原来是<tag>box-sizing</tag>的问题啊卧槽</p></div>
+    </div>
+    <div class="container-fluid">
+        <p>奶奶个腿的
+            <br/>为什么一定要是Hello World呢？虽然我经常会变成Hellow Word</p>
+        <wo>????</wo>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./js/jquery.min.js"></script>
+</body>
+
+</html>
