@@ -1,0 +1,53 @@
+code>tag {
+    color: #4880c0;
+    font-size: 100%;
+}
+
+code>abb {
+    color: #33b5e5 font-size: 100%;
+}
+
+code>sta {
+    color: #000 font-size: 100%;
+}
+
+code>val {
+    color: #d44905 font-size: 100%;
+}
+
+code>comm {
+    color: #33be55 font-size: 100%;
+}
+
+tag,
+abb,
+sta,
+val,
+comm {
+    font-size: 90%;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+}
+
+tag {
+    color: #4880c0
+}
+
+abb {
+    color: #33b5e5
+}
+
+sta {
+    color: #000
+}
+
+val {
+    color: #c7254e
+}
+
+comm {
+    color: #33be55;
+}
+
+code {
+    display: block;
+}
