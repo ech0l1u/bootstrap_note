@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>栅格系统</title>
+    <link rel="stylesheet" type="text/css" href="./css/code.css">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="./js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>栅格系统</h1>
+        <div class="container">
+            <p>bootstrap提供一套响应式
+                <del>我猜大概就是会随着浏览器窗口宽度自动改变排列</del>的，移动设备优先的流式
+                <del>就是铺满地，像
+                    <val>.container-fluid</val>这样的</del>栅格系统，最多12列</p>
+        </div>
+        <h2>概述</h2>
+        <div class="container">
+            <p>栅格系统是用一系列行（
+                <tag>row</tag>）和列（
+                <tag>column</tag>）的组合来创建页面布局，注意是整个页面布局。创造好的布局可以塞在里面。其实栅格系统有点像用
+                <tag>&#60;table></tag>来创建布局，不同的是，bootsrap的栅格全是用
+                <tag>&#60;div</tag>
+                <abb>class</abb>
+                =
+                <val>"row"</val>
+                <tag>></tag>当成
+                <tag>&#60;th></tag>，用
+                <tag>&#60;div</tag>
+                <abb>class</abb>
+                =
+                <val>"col-xs-N"</val>
+                <tag>></tag>当成
+                <tag>&#60;td></tag>。前面那个
+                <tag>&#60;div</tag>
+                <abb>class</abb>
+                =
+                <val>"col-xs-N"</val>
+                <tag>></tag>里的
+                <val>N</val>我猜应该是可以是1到12之间的整数，但是最好还是12的约数会好一点吧。
+                <br>
+                <del>突然想起来一种类名的写法，就是
+                    <abb>class</abb>
+                    =
+                    <val>"name1 name2"</val>
+                </del>
+            </p>
+            <p>虽然说类名里带
+                <val>row</val>和
+                <val>col</val>，但是实际上还是和
+                <tag>&#60;th></tag>和
+                <tag>&#60;td></tag>一样一行一行摞出来的。</p>
+            <p>
+                <val>.row</val>必需位于
+                <val>.container</val>或者
+                <val>.container-fluid</val>里，内容放
+                <val>.col-xs-N</val>里，而且只有
+                <val>.col-xs-N</val>能当
+                <val>.row</val>的直接子元素</p>
+            <p>可以给
+                <val>.col-xs-N</val>设置
+                <abb>padding</abb>值使
+                <val>col</val>分隔开，可以给
+                <val>.row</val>设置负的
+                <abb>margin</abb>值来弥补
+                <val>.container</val>的
+                <abb>padding</abb>值，这样会间接为行（
+                <val>row</val>）所包含的列（
+                <val>column</val>）抵消掉了
+                <abb>padding</abb>
+                <del>这个间接抵消是个啥意思啊？</del>。</p>
+            <p>如果一行（
+                <val>row</val>）里列（
+                <val>column</val>）的数量超过12，超过的部分会另起一行显示，但是还是属于之前那一行（
+                <val>row</val>）的一部分</p>
+        </div>
+        <h2>媒体查询<small>虽然我看CSS时没有认真看媒体查询</small></h2>
+        <div class="container">
+            <p>在 bootstrap.css里，媒体查询有三个点，分别是768px，992px，1200px。这三个点就是媒体查询的分界点，在原生的bootstrap里，和屏幕宽度有关的媒体查询在原生的bootstrap的CSS里是这样的：
+            </p>
+            <pre><code><tag>@media</tag> (<abb>min-width</abb>: 768<val>px</val>) {
+    <val>.container</val>{
+        <abb>width</abb>: 750<val>px</val>;
+    }
+}
+<tag>@media</tag> (<abb>min-width</abb>: 992<val>px</val>) {
+    <val>.container</val>{
+        <abb>width</abb>: 970<val>px</val>;
+    }
+}
+<tag>@media</tag> (<abb>min-width</abb>: 1200<val>px</val>) {
+    <val>.container</val>{
+        <abb>width</abb>: 1170<val>px</val>;
+    }
+}</code></pre>
+            <p>其实看清楚
+                <val>.container</val>
+                <sta>{</sta>
+                <abb>width</abb>
+                <sta>: 750/970/1170</sta>
+                <val>px</val>
+                <sta>;}</sta>这句话就差不多了，</p>
+        </div>
+        <h2>栅格参数</h2>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                超小屏幕
+                                <small>手机 (&lt;768px)</small>
+                            </th>
+                            <th>
+                                小屏幕
+                                <small>平板 (≥768px)</small>
+                            </th>
+                            <th>
+                                中等屏幕
+                                <small>桌面显示器 (≥992px)</small>
+                            </th>
+                            <th>
+                                大屏幕
+                                <small>大桌面显示器 (≥1200px)</small>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="text-nowrap">栅格系统行为</th>
+                            <td>总是水平排列</td>
+                            <td colspan="3">开始是堆叠在一起的，当大于这些阈值时将变为水平排列C</td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">
+                                <val>.container</val> 最大宽度</th>
+                            <td>None （自动）</td>
+                            <td>750px</td>
+                            <td>970px</td>
+                            <td>1170px</td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">类前缀</th>
+                            <td>
+                                <val>.col-xs-</val>
+                            </td>
+                            <td>
+                                <val>.col-sm-</val>
+                            </td>
+                            <td>
+                                <val>.col-md-</val>
+                            </td>
+                            <td>
+                                <val>.col-lg-</val>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">列（column）数</th>
+                            <td colspan="4">12</td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">最大列（column）宽</th>
+                            <td class="text-muted">自动</td>
+                            <td>~62px</td>
+                            <td>~81px</td>
+                            <td>~97px</td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">槽（gutter）宽</th>
+                            <td colspan="4">30px （每列左右均有 15px）</td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">可嵌套</th>
+                            <td colspan="4">是</td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">偏移（Offsets）</th>
+                            <td colspan="4">是</td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">列排序</th>
+                            <td colspan="4">是</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr/> 毕竟栅格是用来
+            <b>排版</b>的，不是拿来建表的，所以不要被带歪了
+            <hr/>
+        </div>
+        <h2>试一下</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">三分之一</div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">三分之一</div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">三分之一</div>
+                </div>
+            </div>
+            上面用的是
+            <val>.col-md-4</val>，所以开调试选水果之类的话，就会变成一个一个垂直排下来，想要避免在小屏幕上还保持原来的排版，那么类名就应该这么写了：
+            <abb>class</abb>
+            <sta>="</sta>
+            <val>col-sx-N col-sm-N col-md-N col-lg-N</val>
+            <sta>"</sta>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">四分之一</div>
+                </div>
+                <div class="col-md-3">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">四分之一</div>
+                </div>
+                <div class="col-md-3">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">四分之一</div>
+                </div>
+                <div class="col-md-3">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">四分之一</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">六分之一</div>
+                </div>
+                <div class="col-md-2">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">六分之一</div>
+                </div>
+                <div class="col-md-2">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">六分之一</div>
+                </div>
+                <div class="col-md-2">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">六分之一</div>
+                </div>
+                <div class="col-md-2">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">六分之一</div>
+                </div>
+                <div class="col-md-2">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">六分之一</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">如果有四个三分之一，就会变成这样子，最后面的那个三分之一到另外一行去了</div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">如果有四个三分之一，就会变成这样子，最后面的那个三分之一到另外一行去了</div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">如果有四个三分之一，就会变成这样子，最后面的那个三分之一到另外一行去了</div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">如果有四个三分之一，就会变成这样子，最后面的那个三分之一到另外一行去了</div>
+                </div>
+            </div>
+        </div>
+        <h2>流式布局</h2>
+        <div class="container">
+            <p>前面说了流式布局就是栅格放在
+                <val>.container-fluid</val>里头的，因为现在这个位置最外面有一层
+                <val>.container</val>，
+                <val>.container-fluid</val>和
+                <val>.container</val>不能相互嵌套
+                <del>
+                    <val>.container-fluid</val>在
+                    <val>.container</val>里的话也会有
+                    <abb>margin</abb>这类东西的</del>，所以就不展示了。</p>
+        </div>
+        <h2>列偏移</h2>
+        <div class="container">
+            <p>使用
+                <val>.col-md-offset-N</val>
+                <del>里面那个
+                    <val>md</val>变成
+                    <val>sx sm lg</val>应该也是可以的，N是整数</del>可以往右偏移N列宽度，一行12列。
+                <del>不知道超出去的部分在bootstrap里会怎么样啊</del>
+            </p>
+            <p>注意
+                <val>.col-md-offset-N</val>这个类是因为
+                <val>.col-md-N</val>才有意义的，所以要用别忘了最重要的
+                <val>.col-md-N</val>
+            </p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">----></div>
+                </div>
+                <div class="col-md-3 col-md-offset-3">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">
+                        <val>col-md-offset-3</val>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">---->
+                        <val>col-md-offset-1</val>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-offset-4">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">
+                        <val>col-md-offset-4</val>
+                    </div>
+                </div>
+            </div>
+            <p>通过实验发现，列偏移根本不会移出
+                <val>.container</val>外边去，因为要出去的都会出现在另外一行，有点像
+                <abb>float</abb>
+                <sta>: </sta>
+                <val>"xxx"</val>了。</p>
+        </div>
+        <h2>列嵌套</h2>
+        <div class="container">
+            <p>就是在一个
+                <tag>div</tag>
+                <abb>class</abb>
+                <sta>=</sta>
+                <val>"col-md-N"</val>
+                <tag>></tag>里面建一个栅格，里面的那个栅格和普通栅格不一样的就只有父元素不一样，其他都是一样的。</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">
+                        <val>.col-md-6</val>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <val>.col-md-6</val>
+                            </div>
+                            <div class="col-md-6">
+                                <val>.col-md-6</val>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div style="height: 100px;display: table-cell;vertical-align: middle">
+                        <val>.col-md-6</val>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>看到这我才明白，栅格里默认的排版并不是
+            <abb>text-align</abb><sta>:</sta>
+            <val>center</val>这种方式，栅格只是给了一个框架而已，，。</p>
+        <h2>列排序</h2>
+        <p>使用<val>.col-md-push-N</val>和<val>.col-md-pull-N</val>可以改一下列的显示顺序，那个<val>N</val>的值我不是很清楚啊，不过<val>push</val>和<val>pull</val>的意思和平时语义不太一样，分别是<b>往后推</b> 和<b>往前拉</b>的意思[/抠鼻]</p><p>平时用不着，不演示了</p>
+        <h2>Less mixin和变量</h2>
+        <div class="container"><p>这个要自己动手编译bootstrap才会用到了，暂时不表</p></div>
+    </div>
+</body>
+
+</html>
