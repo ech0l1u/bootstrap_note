@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./css/code.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <title>排版</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>排版</h1> 这里只说一些bootstrap自带的类
+        <h2><val>.small</val>类</h2>
+        <div class="container">
+            <p>
+                <val>.small</val>用在内联元素和块级元素都可以替代
+                <tag>&#60;small></tag>
+                <del>好像
+                    <tag>&#60;small></tag>是个内联元素吧</del>，
+                <val>.small</val>用在块级元素无压力</p>
+        </div>
+        <h2>文本对齐</h2>
+        <div class="container">
+            <p>其实就是用类代替
+                <abb>text-align</abb>
+                <sta>:</sta>
+                <val>xxxx</val>的。</p>
+            <p>
+                <div class="row">
+                    <div class="col-md-3 col-xs-6">
+                        <val>.text-left</val>
+                        <br/>
+                        <val>.text-right</val>
+                        <br/>
+                        <val>.text-center</val>
+                        <br/>
+                        <val>.text-nowrap</val>
+                    </div>
+                    <div class="col-md-3 col-xs-6">左对齐
+                        <br/>右对齐
+                        <br/>居中
+                        <br/>不换行文本</div>
+                </div>
+            </p>
+            <p>
+                最后还有一个
+                <val>.text-justify</val>，这玩意兼容性简直爆炸，不用。
+            </p>
+        </div>
+        <h2>文本大小写</h2>
+        <div class="container">
+            <p>其实就是用类代替
+                <abb>text-transfrom</abb>
+                <sta>:</sta>
+                <val>xxxx</val>的。</p>
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <val>.text-lowercase</val>
+                    <br/>
+                    <val>.text-uppercase</val>
+                    <br/>
+                    <val>.text-capitalize</val>
+                </div>
+                <div class="col-md-3 col-xs-6">全小写<span class="text-lowercase"><val>.text-lowercase</val></span>
+                    <br/> 全大写
+                    <span class="text-uppercase"><val>.text-uppercase</val></span>
+                    <br/>首字母大写<span class="text-capitalize"><val>.text-capitalize</val></span>
+                </div>
+            </div>
+        </div>
+        <h2>缩略语</h2>
+        <div class="container">
+            <p>一般来说在HTML里会用
+                <tag>&#60;abbr></tag>来表示缩写，比如说
+                <br/>
+                <abbr title="People's Republic of China">PRC</abbr><code>
+        	<tag>&#60;abbr></tag> <abb>title</abb><sta>=</sta><val>"People's Republic of China"</val><tag>></tag><sta>PRC</sta><tag>&#60;/abbr></tag>
+        </code>bootstrap里肯定是能用的</p>
+            <p>bootstrap里还提供一种类：
+                <val>.initialism</val>,这个在<a href="./css/bootstrap.css">bootstrap.css</a>里是
+                <abb>font-size</abb>
+                <sta>:</sta>
+                <val>90%</val>
+                <sta>;</sta>
+                <abb>text-transform</abb>
+                <sta>:</sta>
+                <val>uppercase</val>
+                <sta>;</sta>这样子的，所以能用在缩写这里，而且字号还要小10%</p>
+            <blockquote>
+                <p>
+                    <abbr title="How to make love" class="initialism">HTML</abbr> is HyperText Markup Language</p>
+                <p>
+                    <abbr title="How to make love">HTML</abbr> is HyperText Markup Language</p>
+            </blockquote>上面就是用了
+            <val>.initialism</val>和没用
+            <val>.initialism</val>的对比
+        </div>
+        <h2>引用</h2>
+        <div class="container">
+            <p>本来bootsrap里引用没啥特点的，该
+                <tag>&#60;blockquote></tag>的该
+                <tag>&#60;q></tag>该咋样就咋样，但是
+                <tag>&#60;footer></tag>配合
+                <tag>&#60;blockquote></tag>就有点意思了，在<a href="./css/bootstrap.css">bootstrap.css</a>里：
+                <pre><code><tag>blockquote footer</tag>,
+<tag>blockquote small</tag>,
+<tag>blockquote </tag><val>.small </val>{
+ 	<abb>display</abb>:<val> block</val>;
+ 	<abb>font-size</abb>: <val>80%</val>;
+ 	<abb>line-height</abb>: <val>1.42857143</val>;
+	<abb>color</abb>: <val>#777</val>;
+}</code></pre>可以看到不止
+                <tag>&#60;footer></tag>，还有
+                <tag>&#60;small></tag>，
+                <val>.small</val>都可以配合
+                <tag>&#60;blockquote></tag>这么玩。
+                <blockquote>我即使是死了，钉在棺材里了，也要在墓里，用这腐朽的声带喊出
+                    <br/>“WQNLLGB啊”
+                    <footer>鲁迅</footer>
+                </blockquote>那个波折号是自带的，不用自己加。</p>
+            <h3>靠右边的引用</h3> 用
+            <val>.blockquote-reverse</val>来实现，其实在<a href="./css/bootstrap.css">bootstrap.css</a>里还有不少和引用有关的玩意，这里就不多说了
+            <blockquote class="blockquote-reverse">
+                <p>Lolita, light of my life, fire of my loins. My sin, my soul.</p>
+                <footer>Herbert Herbert in
+                    <cite>Lolita</cite>
+                </footer>
+            </blockquote>
+        </div>
+        <h2>列表</h2>
+        <div class="container">
+            <h3>无样式列表</h3>
+            <p>
+                用
+                <val>.list-unstyled</val>，消除所有
+                <abb>list-style</abb>，不过这个类只针对
+                <b>子元素</b>，意思就是说子元素
+                <tag>&#60;li</tag>里再嵌套的话，不会继承。 就像下面这样，如果想要继承效果的话，在嵌套里的
+                <tag>&#60;ul></tag>
+                <tag>&#60;ol></tag>
+                <tag>&#60;dl></tag>里添加类，不要在
+                <tag>&#60;li></tag>里加，会出问题的，，
+            </p>
+            <ol class="list-unstyled">
+                <li>li----</li>
+                <li>li---</li>
+                <li>li--
+                    <ol>
+                        <li>li----</li>
+                        <li>li---</li>
+                    </ol>
+                </li>
+            </ol>
+            <h3>内联列表</h3>
+            <p>用
+                <val>.list-inline</val>，就是
+                <abb>display</abb>
+                <sta>: </sta>
+                <val>inline-block</val>再加一点
+                <abb>padding</abb>，同样的也只针对子元素，注意事项和上面是一样的</p>
+            <ol class="list-inline">
+                <li>li----</li>
+                <li>li---</li>
+                <li>li--
+                    <ol>
+                        <li>li----</li>
+                        <li>li---</li>
+                    </ol>
+                </li>
+            </ol>
+            <h3><tag>&#60;dl></tag>和<tag>&#60;dt></tag>和<tag>&#60;dd></tag></h3>
+            <p>一般情况在bootstrap里的
+                <tag>&#60;dl></tag>和
+                <tag>&#60;dt></tag>和
+                <tag>&#60;dd></tag>是这样的：</p>
+            <dl>
+                <dt>???</dt>
+                <dd>........!!</dd>
+                <dt>??</dt>
+                <dd>............!!!</dd>
+            </dl>
+            <p>这时候用
+                <val>.dl-horizontal</val>让
+                <tag>&#60;dt></tag>和
+                <tag>&#60;dl></tag>并排显示</p>
+            <dl class="dl-horizontal">
+                <dt>大概：</dt>
+                <dd>就是这个样子的</dd>
+                <dt>当然</dt>
+                <dd>没人会用
+                    <tag>&#60;dl</tag>嵌套吧</dd>
+                <dt>我的意思是</dt>
+                <dd><val>dl.dl-horizontal</val>也只是对子元素有效</dd>
+            </dl>
+            <p>原理就是把<tag>&#60;dt></tag>固定宽度，然后左<abb>float</abb>，文本靠右对齐，产生的效果</p>
+        </div>
+    </div>
+</body>
+
+</html>
